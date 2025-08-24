@@ -1,0 +1,55 @@
+
+#include "NOTE.h"
+#include <iostream>
+#include <commdlg.h>
+#include <tclap/CmdLine.h>
+
+using namespace std;
+using namespace smf;
+
+int main(int argc, char* argv[])
+{
+    string fileName;
+    vector<NOTE> notes;
+
+    const char* info = "A program to play midi files \n \
+        You nead to press the space to play the MIDI file. \n \
+        You can press the space to pause and continue the MIDI file. \n \
+        You can press the 'F' key to end the MIDI file. \n \
+        If you don't use the -d or --dw option, you can use the arrow keys to control the time of the music. \n \
+        ";
+
+    TCLAP::CmdLine cmd("A program to play midi files", ' ', "v0.1");
+    TCLAP::ValueArg<string> fileNameArg("f", "file", "The name of the file to play", false, "", "string");
+    TCLAP::SwitchArg dwArg("d", "dw", "Don't show the window", false);
+
+    cmd.add(fileNameArg);
+    cmd.add(dwArg);
+
+    try {
+        cmd.parse(argc, argv);
+        if (fileNameArg.isSet()) {
+            fileName = fileNameArg.getValue();
+        }
+        else {
+            cout << "Please enter a file name: ";
+            cin >> fileName;
+        }
+    }
+    catch (TCLAP::ArgException& e) {
+        cerr << "error: " << e.error() << " for arg " << e.argId() << endl;
+    }
+
+    smf::MidiFile midifile;
+    midifile.read(fileName);
+    midifile.doTimeAnalysis();
+    midifile.linkNotePairs();
+    notes = parsePlayMidiFile(fileName);
+    vector<NOTEL> notel = linkNotes(notes);
+    int track = midifile.getTrackCount();
+    int noteNum = notel.size();
+
+    PlayNotes(notes, dwArg.isSet());
+
+    return 0;
+}
