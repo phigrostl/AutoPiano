@@ -43,3 +43,9 @@ The program is pause at initialization and you need to press `Space` to start pl
 
 #### jump (Don't use -d/-dw)
 When playing, press the `left mouse button` above the window to jump to the current position of the mouse pointer.
+
+#### end play
+When playing, press the `F` key to end playing.
+
+#### exit
+When inputting, input `exit` to exit the program.
