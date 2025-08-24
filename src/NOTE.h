@@ -569,7 +569,7 @@ void PlayNotes(std::vector<NOTE> notes, bool Ndraw)
             {
                 sendKeyMessageUp(pitchToKey(j + 36), hwnd);
             }
-            return;
+            break;
         }
         if (GetAsyncKeyState(' ') & 0x8000)
         {
@@ -586,6 +586,8 @@ void PlayNotes(std::vector<NOTE> notes, bool Ndraw)
             start = std::chrono::high_resolution_clock::now() - duration;
         }
     }
+    if (!Ndraw)
+        closegraph();
 }
 
 #endif // NOTE_H
