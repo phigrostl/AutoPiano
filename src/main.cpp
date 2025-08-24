@@ -19,7 +19,7 @@ int main(int argc, char* argv[])
         If you don't use the -d or --dw option, you can use the arrow keys to control the time of the music. \n \
         ";
 
-    TCLAP::CmdLine cmd("A program to play midi files", ' ', "v0.1.0");
+    TCLAP::CmdLine cmd("A program to play midi files", ' ', "v0.1.1");
     TCLAP::ValueArg<string> fileNameArg("f", "file", "The name of the file to play", false, "", "string");
     TCLAP::SwitchArg dwArg("d", "dw", "Don't show the window", false);
 
@@ -31,25 +31,30 @@ int main(int argc, char* argv[])
         if (fileNameArg.isSet()) {
             fileName = fileNameArg.getValue();
         }
-        else {
-            cout << "Please enter a file name: ";
-            cin >> fileName;
-        }
     }
     catch (TCLAP::ArgException& e) {
         cerr << "error: " << e.error() << " for arg " << e.argId() << endl;
     }
 
-    smf::MidiFile midifile;
-    midifile.read(fileName);
-    midifile.doTimeAnalysis();
-    midifile.linkNotePairs();
-    notes = parsePlayMidiFile(fileName);
-    vector<NOTEL> notel = linkNotes(notes);
-    int track = midifile.getTrackCount();
-    int noteNum = notel.size();
+    do {
+        if (!dwArg.isSet()) {
+            cout << "Please enter the name of the file to play: ";
+            cin >> fileName;
+        }
+        smf::MidiFile midifile;
+        midifile.read(fileName);
+        midifile.doTimeAnalysis();
+        midifile.linkNotePairs();
+        notes = parsePlayMidiFile(fileName);
+        vector<NOTEL> notel = linkNotes(notes);
+        int track = midifile.getTrackCount();
+        int noteNum = notel.size();
 
-    PlayNotes(notes, dwArg.isSet());
+        PlayNotes(notes, dwArg.isSet());
+
+    } while (!dwArg.isSet());
+
+    
 
     return 0;
 }
