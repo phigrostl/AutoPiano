@@ -16,6 +16,7 @@ int main(int argc, char* argv[])
         You nead to press the space to play the MIDI file. \n \
         You can press the space to pause and continue the MIDI file. \n \
         You can press the 'F' key to end the MIDI file. \n \
+        You can enter the 'exit' to exit the program. \n \
         If you don't use the -d or --dw option, you can use the arrow keys to control the time of the music. \n \
         ";
 
@@ -41,6 +42,8 @@ int main(int argc, char* argv[])
             cout << "Please enter the name of the file to play: ";
             cin >> fileName;
         }
+        if (fileName == "exit")
+            break;
         smf::MidiFile midifile;
         midifile.read(fileName);
         midifile.doTimeAnalysis();
