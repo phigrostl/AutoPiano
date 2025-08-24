@@ -416,6 +416,12 @@ void drawFileNotes(std::vector<NOTEL> notel, int track, int noteNum, std::string
 
 void PlayNotes(std::vector<NOTE> notes, bool Ndraw)
 {
+
+    for (int i = 0; i < 36; i++) {
+        downKey[i] = 0;
+        KeyColor[i] = 0;
+    }
+
     if (!Ndraw) {
         initgraph(360, 270, 1);
         setlinecolor(0x000000);
@@ -455,11 +461,6 @@ void PlayNotes(std::vector<NOTE> notes, bool Ndraw)
             {
                 msg.x = oldx;
                 msg.y = oldy;
-            }
-
-            if (i == notes.size() - 1)
-            {
-                isPlaying = false;
             }
 
             if (msg.message == WM_LBUTTONDOWN)
