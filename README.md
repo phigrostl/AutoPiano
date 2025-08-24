@@ -1,18 +1,27 @@
 # AutoPiano
 ## Use
-#### After download the latest version from release page
-#### You can enter
-```bash
-AutoPiano -h
-```
-#### to check out the usage help
+
+#### [How to use the program](https://github.com/phigrostl/AutoPiano/docs/HowToUse.md)
 
 ## Build
-### Dependencies
+### 1. **Clone the repository**
 
-#### [EasyX](https://easyx.cn/) graphics library
-#### [MidiFile](https://github.com/craigsapp/midifile) midi file parser
-#### [TCLAP](https://github.com/DAarno/tclap) command line parser
+```bash
+git clone https://github.com/phigrostl/AutoPiano.git
+```
+```bash
+cd AutoPiano
+```
 
-#### Use src folder to build the project
+### 2. **Install dependencies**
 
+The project relies on the following libraries:
+- [EasyX](https://easyx.cn/) (GUI library)
+- [MidiFile](https://github.com/craigsapp/midifile) (MIDI file parser)
+- [TCLAP](https://github.com/mirror/tclap) (Command line argument parser)
+
+### 3. **Build the project**
+#### After installing the dependencies, you can build the project using the following command:
+```bash
+g++ -std=c++11 -o AutoPiano AutoPiano.cpp -leasyx
+```

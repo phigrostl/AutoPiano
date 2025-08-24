@@ -38,7 +38,7 @@ int main(int argc, char* argv[])
     }
 
     do {
-        if (!dwArg.isSet()) {
+        if (!fileNameArg.isSet()) {
             cout << "Please enter the name of the file to play: ";
             cin >> fileName;
         }
