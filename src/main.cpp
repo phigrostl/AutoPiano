@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
         If you don't use the -d or --dw option, you can use the arrow keys to control the time of the music. \n \
         ";
 
-    TCLAP::CmdLine cmd(info, ' ', "v0.1.2");
+    TCLAP::CmdLine cmd(info, ' ', "v0.1.5");
     TCLAP::ValueArg<string> fileNameArg("f", "file", "The name of the file to play", false, "", "string");
     TCLAP::SwitchArg dwArg("d", "dw", "Don't show the window", false);
 
