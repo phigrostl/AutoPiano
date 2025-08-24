@@ -1,7 +1,7 @@
 # AutoPiano
 ## Use
 
-#### [How to use the program](https://github.com/phigrostl/AutoPiano/docs/HowToUse.md)
+#### [How to use the program](https://github.com/phigrostl/AutoPiano/blob/main/docs/HowToUse.md)
 
 ## Build
 ### 1. **Clone the repository**

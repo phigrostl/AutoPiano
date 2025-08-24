@@ -10,8 +10,7 @@
                 "${workspaceFolder}\\src\\main.cpp",
                 "-o",
                 "${workspaceFolder}\\build\\AutoPiano.exe",
-                "-leasyx",
-                "-lmidi"
+                "-leasyx"
             ],
             "group": "build",
             "problemMatcher": [
