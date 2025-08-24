@@ -1,0 +1,23 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build C++",
+            "type": "shell",
+            "command": "E:\\Microsoft VS Code\\mingw64\\bin\\g++.exe", // Revise this to your g++ path
+            "args": [
+                "-g",
+                "${workspaceFolder}\\src\\main.cpp",
+                "-o",
+                "${workspaceFolder}\\build\\AutoPiano.exe",
+                "-leasyx",
+                "-lmidi"
+            ],
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Build C++"
+        }
+    ]
+}
